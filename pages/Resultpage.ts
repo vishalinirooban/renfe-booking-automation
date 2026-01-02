@@ -1,6 +1,7 @@
 import { Page, Locator } from '@playwright/test';
 
-export class ResultsPage {
+export class ResultsPage 
+{
     private readonly page: Page;
     private readonly dateCard: Locator;
     private readonly titleOriginDestination : Locator;
@@ -8,7 +9,8 @@ export class ResultsPage {
     private readonly listoftraindetails :Locator;
    
 
-    constructor(page: Page) {
+    constructor(page: Page) 
+    {
         this.page = page;
         this.dateCard = page.locator('.rescalendar_day_cells')
         this.titleOriginDestination = page.locator('div.lugares:visible')
@@ -27,6 +29,8 @@ export class ResultsPage {
         await this.dateCard.isVisible();
         await this.nextDayButton.click();
 
+         
+        
         const trainLocators = await this.listoftraindetails.locator('> div').all();
         const count = trainLocators.length;
         console.log(`Total trains found: ${count}`);
@@ -35,14 +39,17 @@ export class ResultsPage {
 
         for (const train of trainLocators) 
             {
+
+                const priceSelector = await train.locator('span').filter({ hasText: 'Precio desde' }).first().innerText();
+                console.log(priceSelector);
+
                 const traininfo = await train.getAttribute('aria-label')
-                console.log(traininfo);
-
+                console.log(`Train Info >> Departure: ${traininfo}`);
                 
+            
+                }
+                    
             }
-}
-}
+    }
 
-
-    
 

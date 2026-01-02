@@ -21,7 +21,7 @@ test('Search One-Way Train Ticket from Madrid to Barcelona in Homepage', async({
 {
  
     const Config = new TestConfig();
-    await page.goto(Config.appUrl); //Navigate to application URL
+    await page.goto(Config.appUrl); 
 
     const searchpage = new Searchpage(page);
     

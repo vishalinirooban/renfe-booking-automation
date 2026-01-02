@@ -33,13 +33,7 @@ export class CalendarPage {
       //this.clickOnCancel= page.getByRole('button', { name: 'Cancelar' });
       this.searchButton = page.getByRole('button', { name: /Buscar/i });
   }
-
- /**  async scrollToCalendar() {
-    // Scroll down to make calendar visible
-    await this.clickmonthpage.waitFor({ state: 'visible' });
-  await this.clickmonthpage.scrollIntoViewIfNeeded();
-
-  }**/
+  
   async selectOneWayDate()
   {
      await acceptcookies(this.page);

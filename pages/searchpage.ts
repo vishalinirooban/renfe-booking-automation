@@ -3,7 +3,7 @@ import { acceptcookies } from '../utils/cookies'
 
 export class Searchpage {
 
-    //locators
+    
     private readonly page : Page;
     private readonly originComboBox : Locator;
     private readonly originInput : Locator;
@@ -11,7 +11,7 @@ export class Searchpage {
     private readonly destinationInput : Locator;
     private readonly destinationOption : Locator;
    
-    //constructors
+    
     constructor(page:Page)
     {
         this.page =page;
@@ -24,7 +24,7 @@ export class Searchpage {
         
     }
 
-    //action methods
+   
 
     async acceptCookies() {
     await acceptcookies(this.page);
