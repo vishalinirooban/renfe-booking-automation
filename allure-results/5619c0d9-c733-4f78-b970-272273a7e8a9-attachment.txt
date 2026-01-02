@@ -1,0 +1,5 @@
+radio_button_checked
+Origen: Madrid-Atocha Cercanías 
+location_on
+Destino: Barcelona-Sants
+Total trains found: 1

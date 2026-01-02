@@ -37,7 +37,7 @@ test('Search One-Way Train Ticket from Madrid to Barcelona in Homepage', async({
     
 
     const resultpage =new ResultsPage(page);
-    await resultpage.findTicketInPriceRange(50, 60);
+    await resultpage.findTicketInPriceRange();
 
     
     

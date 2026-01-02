@@ -1,0 +1,8 @@
+origin and destination: radio_button_checked
+Origen: Madrid-Atocha Cercanías 
+location_on
+Destino: Barcelona-Sants
+Total trains found: 3
+Tren con salida a las 09:16 y llegada a las 20:51. Duración 11 horas 35 minutos. Tren con Transbordo. Pulse espacio o enter para tener más detalle de las tarifas disponibles.
+Tren con salida a las 13:11 y llegada a las 22:35. Duración 9 horas 24 minutos. Tren con Transbordo. Pulse espacio o enter para tener más detalle de las tarifas disponibles.
+Tren con salida a las 13:11 y llegada a las 22:35. Duración 9 horas 24 minutos. Tren con Transbordo. Pulse espacio o enter para tener más detalle de las tarifas disponibles.
