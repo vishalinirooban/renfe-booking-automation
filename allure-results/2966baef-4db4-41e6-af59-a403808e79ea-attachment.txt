@@ -1,0 +1,10 @@
+--- Attempt 1: Checking date ---
+Found 0 train options.
+❌ No 50-60€ ticket on this date. Clicking Next Day.
+--- Attempt 2: Checking date ---
+Found 0 train options.
+❌ No 50-60€ ticket on this date. Clicking Next Day.
+--- Attempt 3: Checking date ---
+Found 0 train options.
+❌ No 50-60€ ticket on this date. Clicking Next Day.
+--- Attempt 4: Checking date ---

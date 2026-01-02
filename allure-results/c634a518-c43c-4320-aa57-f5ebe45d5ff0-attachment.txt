@@ -1,0 +1,10 @@
+--- Attempt 1: Checking Outbound Date ---
+Found 0 train options in Ida section.
+❌ No 50-60€ ticket found. Advancing to next day...
+--- Attempt 2: Checking Outbound Date ---
+Found 0 train options in Ida section.
+❌ No 50-60€ ticket found. Advancing to next day...
+--- Attempt 3: Checking Outbound Date ---
+Found 0 train options in Ida section.
+❌ No 50-60€ ticket found. Advancing to next day...
+--- Attempt 4: Checking Outbound Date ---
