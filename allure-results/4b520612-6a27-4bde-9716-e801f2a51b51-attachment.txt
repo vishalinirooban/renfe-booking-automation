@@ -1,8 +1,0 @@
---- Attempt 1: Checking Outbound Date ---
-❌ No trains available for this date.
-Moving to next day...
---- Attempt 2: Checking Outbound Date ---
-Neutral timeout: neither results nor error message found yet.
-Moving to next day...
---- Attempt 3: Checking Outbound Date ---
-Neutral timeout: neither results nor error message found yet.

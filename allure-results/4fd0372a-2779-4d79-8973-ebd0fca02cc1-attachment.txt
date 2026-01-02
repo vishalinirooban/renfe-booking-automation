@@ -1,2 +1,0 @@
---- Attempt 1: Checking availability ---
-Found 130 train options.
