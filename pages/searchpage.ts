@@ -34,12 +34,16 @@ export class Searchpage {
   {
   await this.originComboBox.click();
   await this.originInput.fill(origin);
+  const option = this.page.getByRole('option', { name: origin, exact: false }).first();;
+  await option.waitFor({ state: 'visible', timeout: 5000 });
   await this.originOption.click();
   }
 
   async selectDestinationCity(destination: string)
   {
    await this.destinationInput.fill(destination);
+   const option = this.page.getByRole('option', { name: destination, exact: false }).first();;
+   await option.waitFor({ state: 'visible' });
    await this.destinationOption.click();
 
   }

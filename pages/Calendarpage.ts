@@ -33,12 +33,14 @@ export class CalendarPage {
       //this.clickOnCancel= page.getByRole('button', { name: 'Cancelar' });
       this.searchButton = page.getByRole('button', { name: /Buscar/i });
   }
-  
+
   async selectOneWayDate()
   {
      await acceptcookies(this.page);
      await this.calendarButton.click();
-     await acceptcookies(this.page);
+     const calendarContainer = this.page.locator('.lightpick:not(.is-hidden)');
+     await calendarContainer.waitFor({ state: 'visible', timeout: 10000 });
+    await acceptcookies(this.page);
      await this.oneWayOption.click();
      //const calendar = this.page.locator('.lightpick:not(.is-hidden)');
       //await calendar.waitFor({ state: 'visible', timeout: 15000 });
