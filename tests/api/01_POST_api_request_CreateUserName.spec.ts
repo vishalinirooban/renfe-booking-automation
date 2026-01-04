@@ -34,8 +34,6 @@ test('Create New User', async ({ request }) => {
     const dynamicId = responseBody.id; 
     console.log(`The generated ID is: ${dynamicId}`);  
 
-    //const getresponse = request.get('https://reqres.in/api/users/${dynamicId}');
+   
     
-  
-
 });
