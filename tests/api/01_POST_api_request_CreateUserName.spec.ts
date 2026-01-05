@@ -17,7 +17,7 @@ test('Create New User', async ({ request }) => {
         },
         headers: {
             'Content-Type': 'application/json',
-            'x-api-key': 'pub_5a5e5aa6704b8ad14c88d321086f95c60325ff60c15c4ed744fc3493098fa6f4'
+            'x-api-key': 'pro_5de24128d5eade71c593b14496bd09519ac6f405802a6f85'
         }
 
     })

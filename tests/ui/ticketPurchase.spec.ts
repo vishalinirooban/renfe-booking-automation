@@ -10,7 +10,7 @@ steps:
 
 */
 
-import { test, expect } from '@playwright/test'
+import { test} from '@playwright/test'
 import { TestConfig } from '../../test.config'
 import { Searchpage } from '../../pages/searchpage';
 import { CalendarPage } from '../../pages/Calendarpage';
@@ -45,12 +45,6 @@ test('Search One-Way Train Ticket from Madrid to Barcelona in Homepage', async (
 
   const resultpage = new ResultsPage(page);
   await resultpage.findTicketInPriceRange(50, 60);
-
-
-
-
-
-
 
 }
 )

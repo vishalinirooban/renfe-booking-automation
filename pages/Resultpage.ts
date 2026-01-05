@@ -1,8 +1,7 @@
-import { Page, Locator,expect,test} from '@playwright/test';
+import { Page, Locator, expect, test } from '@playwright/test';
 
 export class ResultsPage {
     private readonly page: Page;
-    private readonly dateCard: Locator;
     private readonly titleOriginDestination: Locator;
     private readonly nextDayButton: Locator;
     private readonly listoftraindetails: Locator;
@@ -10,25 +9,22 @@ export class ResultsPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.dateCard = page.locator('.rescalendar_day_cells')
         this.titleOriginDestination = page.locator('div.lugares:visible')
         this.nextDayButton = page.locator('button.move_to_tomorrow:visible')
         this.listoftraindetails = page.locator('#listaTrenesTBodyIda');
-
-
-        // page.getByTitle('Lista de trenes disponibles para la ida')
-
     }
 
     async findTicketInPriceRange(min: number, max: number, max_attempt = 30) {
         let pricefound = false;
 
-         const reportLines: string[] = [];
+        const reportLines: string[] = [];
         for (let attempt = 1; attempt >= 0 && pricefound === false; attempt++) {
             console.log(`----Attempt number : ${attempt}`)
-            reportLines.push(`origin and destination:`, await this.titleOriginDestination.innerText());
+            const rawTitle = await this.titleOriginDestination.innerText();
+            const Title = rawTitle.replace(/location_on|radio_button_checked/g, '').replace(/\s+/g, ' ').trim();
+            reportLines.push(`origin and destination:`, Title);
 
-            //await this.dateCard.isVisible();
+
             const trainLocators = await this.listoftraindetails.locator('> div').all();
             const count = trainLocators.length;
             reportLines.push(`Total trains found: ${count}`);
@@ -41,12 +37,12 @@ export class ResultsPage {
 
                 const priceLabel = train.locator('span').filter({ hasText: 'Precio desde' }).first();
 
-               if(await priceLabel.isVisible()) {
+                if (await priceLabel.isVisible()) {
                     const priceRaw = await priceLabel.innerText();
                     console.log(`price of the train >> ${priceRaw}`);
 
                     const priceSelector = parseFloat(priceRaw.replace(/[^\d,]/g, '')
-                                                             .replace(',', '.'));
+                        .replace(',', '.'));
                     reportLines.push(`Price Found: ${priceSelector}€`);
 
                     if (priceSelector >= min && priceSelector <= max) {
@@ -56,43 +52,37 @@ export class ResultsPage {
                         await basicfare.click();
                         console.log(`Expanded train details`)
                         const basicFareOption = train.locator('span').filter({ hasText: 'Básico' }).first();
-                        await basicFareOption.waitFor({ state: 'visible', timeout: 5000 });
+                        await basicFareOption.waitFor({ state: 'visible' });
                         await basicFareOption.click();
                         console.log(`Selected basic fare`)
                         this.page.getByRole('button', { name: /Seleccionar/i }).click();
                         this.page.locator('#aceptarConfirmacionFareUpgrade').first().click();
                         break;
-                        
+
                     }
-                }else{
+                } else {
                     reportLines.push(`No price details found for this specific train`)
-                    
+
                 }
-                
+
             }
             if (!pricefound) {
-                await this.nextDayButton.waitFor({ state: 'visible', timeout: 5000 });
-                const oldResults = await this.listoftraindetails.innerText();
-                  await this.nextDayButton.click();
-                 const spinner = this.page.locator('.rf-loading, #puntosRecarga-loading'); 
-                  await expect(async () => {
-                    const newResults = await this.listoftraindetails.innerText();
-                      expect(newResults).not.toBe(oldResults);
-                   }).toPass({ timeout: 10000 });
-                    await spinner.waitFor({ state: 'hidden', timeout: 15000 }).catch(() => {});
-                    await this.page.waitForLoadState('networkidle');
-                } 
-                }
-                // ❗ Final assertion
-              expect(pricefound).toBeTruthy();
+                const firstTrain = this.listoftraindetails.locator('> div').first();
+                await this.nextDayButton.click();
+                await expect(firstTrain).toBeHidden();
+                await expect(this.listoftraindetails.locator('> div').first()).toBeVisible();
 
-    // ✅ ATTACH RESULTS TO PLAYWRIGHT HTML REPORT
-    await test.info().attach('Train Search Results', {
-      body: reportLines.join('\n'),
-      contentType: 'text/plain'
-    });
+            }
         }
+        expect(pricefound).toBeTruthy();
+
+
+        await test.info().attach('Train Search Results', {
+            body: reportLines.join('\n'),
+            contentType: 'text/plain'
+        });
     }
+}
 
 
 
