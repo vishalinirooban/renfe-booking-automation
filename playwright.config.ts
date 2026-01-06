@@ -1,5 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
+    
 timeout: 30 * 1000, //30000 ms(30 secs)
 testDir: './tests',
 fullyParallel: false,
@@ -15,6 +16,8 @@ reporter: [
 ['list']
 ],
 
+
+
 use: {
 trace: 'on-first-retry',
 screenshot: 'only-on-failure',
@@ -23,6 +26,15 @@ video: 'retain-on-failure',
 viewport: { width: 1280, height: 720 }, // Set default viewport size for consistency
 ignoreHTTPSErrors: true, // Ignore SSL errors if necessary
 permissions: ['geolocation'], // Set necessary permissions for geolocation-based tests
+launchOptions: {
+      args: [
+        '--incognito',           // Forces incognito mode
+        '--disable-cache',       // Disables the disk cache
+        '--disable-application-cache',
+        '--disable-offline-load-stale-cache',
+        '--disk-cache-size=1'
+      ]
+    }
 },
 
 //grep: /@master/,
@@ -43,5 +55,7 @@ name: 'webkit',
 use: { ...devices['Desktop Safari'] },
 } 
 ],
+
+
 
 });
