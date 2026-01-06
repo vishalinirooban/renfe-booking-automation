@@ -57,6 +57,12 @@ Trace Viewer: A frame-by-frame recording of UI interactions.
 
 Metadata Attachments: Formatted API payloads and localized console logs.
 
+📈 Execution Summary
+
+<p align="center"> <img src="./images/Sample test result.jpg" width="800" alt="Playwright Test Report Summary"> </p>
+
+
+
 Auto-Screenshot: Captured on failure for immediate visual validation.
 
 Data Retrieval: Validates GET /api/users/1 to ensure API consistency and data integrity.
