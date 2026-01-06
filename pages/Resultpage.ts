@@ -71,6 +71,7 @@ export class ResultsPage {
                 await this.nextDayButton.click();
                 await expect(firstTrain).toBeHidden();
                 await expect(this.listoftraindetails.locator('> div').first()).toBeVisible();
+               
 
             }
         }

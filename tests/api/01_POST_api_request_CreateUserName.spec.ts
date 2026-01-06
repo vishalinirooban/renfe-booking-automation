@@ -1,9 +1,3 @@
-/*
-Test : Create Username
-Request Type : post
-
-*/
-
 import { test, expect } from '@playwright/test'
 
 test('Create New User', async ({ request }, testInfo) => {

@@ -1,15 +1,3 @@
-/*
-** Test Case : Search One-Way Train Ticket from Madrid to Barcelona in Homepage
-steps:
-  ---> Navigate to application URL
-  ---> Accept cookies 
-  ---> User select Madrid -atocha from the dropdown in the origin field
-  ---> User select Barcelona-sants from the dropdown in the destination field
- 
-
-
-*/
-
 import { test} from '@playwright/test'
 import { TestConfig } from '../../test.config'
 import { Searchpage } from '../../pages/searchpage';
