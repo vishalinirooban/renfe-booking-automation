@@ -6,7 +6,7 @@ Request Type : post
 
 import { test, expect } from '@playwright/test'
 
-test('Create New User', async ({ request }) => {
+test('Create New User', async ({ request }, testInfo) => {
     const response = await request.post("https://reqres.in/api/users", {
         data: {
             "username": "Morpheus",
@@ -24,15 +24,22 @@ test('Create New User', async ({ request }) => {
 
     const responseBody = await response.json();
     console.log(responseBody);
+    const dynamicId = responseBody.id;
 
+    await test.step(`Extracted Created ID: ${dynamicId}`, async () => {
     expect(response.ok()).toBeTruthy();
     expect(response.status()).toBe(201);
 
     expect(responseBody).toHaveProperty('id');
     expect(responseBody.username).toBe('Morpheus');
 
-    const dynamicId = responseBody.id; 
-    console.log(`The generated ID is: ${dynamicId}`);  
+    });
+
+   
+  await testInfo.attach('User Creation Response', {
+        body: JSON.stringify(responseBody, null, 2),
+        contentType: 'application/json'
+    });
 
    
     
