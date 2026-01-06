@@ -69,10 +69,8 @@ export class ResultsPage {
             if (!pricefound) {
                 const firstTrain = this.listoftraindetails.locator('> div').first();
                 await this.nextDayButton.click();
-                await expect(firstTrain).toBeHidden();
-                await expect(this.listoftraindetails.locator('> div').first()).toBeVisible();
-               
-
+                await expect(firstTrain).toBeHidden({timeout: 10000} );
+                await expect(this.listoftraindetails.locator('> div').first()).toBeVisible({timeout: 10000 });
             }
         }
         expect(pricefound).toBeTruthy();
